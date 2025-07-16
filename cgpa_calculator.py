@@ -1,8 +1,9 @@
 import streamlit as st
 
-st.title(" CGPA Calculator - Created by SRI BALAJI")
+st.title(" CGPA Calculator - Created by Sri Balaji")
 
 st.write("Enter your semester details below:")
+st.info("Note: Subjects with *0 credit points* will not affect your GPA/CGPA calculation.")
 
 total_semesters = st.number_input("Total number of semesters completed (1-8):", min_value=1, max_value=8, step=1)
 
@@ -18,7 +19,7 @@ for sem in range(1, total_semesters + 1):
 
     for subj in range(1, num_subjects + 1):
         st.write(f"Subject {subj}:")
-        credit = st.number_input(f"Credit points for Subject {subj}:", min_value=0.5, step=0.5, key=f"credit_{sem}_{subj}")
+        credit = st.number_input(f"Credit points for Subject {subj}:", min_value=0.0, step=0.5, key=f"credit_{sem}_{subj}")
         grade = st.number_input(f"Grade point you gained (0–10):", min_value=0, max_value=10, step=1, key=f"grade_{sem}_{subj}")
         sem_points += credit * grade
         sem_credits += credit
@@ -27,7 +28,7 @@ for sem in range(1, total_semesters + 1):
         sem_gpa = sem_points / sem_credits
         st.success(f"GPA for Semester {sem}: {sem_gpa:.2f}")
     else:
-        st.warning(f"No credits entered for Semester {sem}.")
+        st.warning(f"No credits entered for Semester {sem}. GPA not calculated.")
 
     overall_points += sem_points
     overall_credits += sem_credits
