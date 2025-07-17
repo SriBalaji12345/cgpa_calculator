@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("CGPA Calculator - Created by Sri Balaji")
+st.title("CGPA Calculator - Created by SRI BALAJI")
 
 st.write("Enter your semester details below:")
 
@@ -44,4 +44,4 @@ for sem in range(1, total_semesters + 1):
 
 if overall_credits > 0:
     cgpa = overall_points / overall_credits
-    st.subheader(f" Your Overall CGPA after {total_semesters} semester(s): {cgpa:.2f}")
+    st.subheader(f" Your Overall CGPA after {total_semesters} semester : {cgpa:.2f}")
